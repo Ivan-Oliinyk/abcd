@@ -240,6 +240,109 @@
 // console.log(Boolean([]));
 // console.log(Boolean({}));
 
-const Constructor = function() {
+// const Constructor = function() {
   
-}
+// }
+
+
+// let counter = 0
+
+// function makeCount (num) {
+//   // console.log(num)
+  
+//   if (num === 10) {
+//     return num
+//   } else {
+//     return makeCount(num + 1)
+//   }
+// }
+
+// console.log(makeCount(counter))
+
+// const numbers = [1, 5, 2, 4, 5, 11, 77, 98, 100, 23]
+// const numbers1 = [1, 5, 2, 4, 5, 11, 77, 98, 100, 23, [1, 5,[1, 5], [1, 5, [1, 5]]]]
+// console.log(numbers.every(el => el))
+// console.log(numbers.some(el => !(el % 11)))
+// console.log(numbers.find(el => el % 11 === 0))
+// console.log(numbers1.flat(Infinity))
+// console.log(numbers.keys())
+// console.log(numbers1.toString())
+// console.log(numbers.toLocaleString());
+// console.log(Math.round(Math.random() * (15 - 10) + 10))
+// console.log(Math.max(...numbers))
+// console.log(Math.min(...numbers))
+
+//////////////////////////////////////////////////////////////////
+// const arr = [2, 4, 0, 100, 4, 11, 2602, 36]
+// console.log(arr.find(el => el % 2));
+
+// const arr1 = [160, 3, 1719, 19, 11, 13, -21]
+// console.log(arr1.find(el => !(el % 2)));
+
+// Написать функцию persistence, которая будет возвращать число, 
+// которое соответствует количеству деления числа на свои элементы, 
+// пока не останется только одно число
+
+// persistence(39) === 3, потому что 3*9 = 27, 2*7 = 14, 1*4=4
+// persistence(999) === 4, потому что 9*9*9 = 729, 7*2*9 = 126, 1*2*6 = 12,  1*2 = 2
+
+
+// function persistence(num) {
+//   let count = 0
+//   let numStr = num.toString()
+
+//   while(numStr.length !== 1) {
+//     numStr = numStr.split("").map(Number).reduce((sum, el) => sum *= el, 1).toString()
+//     count += 1
+//   }
+
+//   return count
+// }
+
+// console.log(persistence(39))
+// console.log(persistence(0))
+// console.log(persistence(999)
+
+
+// Задача: найти непрерывный подмассив в arr, сумма элементов в котором максимальна.
+// // Функция maxSequence(arr) должна возвращать эту сумму.
+// const arr55 = [-2, 1, -3, 4, -1, 2, 1, -5, 4]
+// должно быть 6: [4, -1, 2, 1]
+
+// const maxSequence = arr => arr.reduce((sum, el, i, arr) => sum + el , 0)
+
+// console.log(maxSequence([-2, 1, -3, 4, -1, 2, 1, -5, 4]))
+// 1) Дано матрицу размером 3x3 
+// [1,2,3]
+// [4,5,6]
+// [7,8,9]
+// Ваша задача перевернуть матрицу. Пример:
+// [9,8,7]
+// [6,5,4]
+// [3,2,1]
+// * Решить в одну строку.
+
+// const arr = [
+//   [1,2,3],
+//   [4,5,6],
+//   [7,8,9]
+// ]
+
+// console.log(arr.map(el => el.reverse()).reverse())
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// Ваша задача - написать функцию, которая заменяет все символы, кроме последних четырех, на "#".
+//  maskify("4556364607935616") == "############5616"
+//  maskify(     "64607935616") ==      "#######5616"
+//  maskify(               "1") ==                "1"
+//  maskify(                "") ==                 ""
+
+// const maskify = str => str.split("").map((el) => el = "#" ).join('').slice(0, -4) + str.slice(-4)
+
+// console.log(maskify("64607935616"));
+// console.log(maskify("1"));
+// console.log(maskify(""));
+// console.log(maskify("4556364607935616"));
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
