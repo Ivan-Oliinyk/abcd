@@ -346,3 +346,138 @@
 // console.log(maskify("4556364607935616"));
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Напишите функцию, которая принимает перетасованный список уникальных чисел от 1 до n с отсутствующим одним элементом (который может быть любым числом, включая n). Верните этот недостающий номер.
+
+// console.log(findNumber([1,3,4,5,6,7,8])) //2
+// console.log(findNumber([7,8,1,2,4,5,6])) //3
+// console.log(findNumber([1,2,3,5])) //4
+
+// const findNumber = arr => arr.sort().find((el, i) => el !== i + 1 ) - 1
+// // const findNumber = (arr) =>  arr.sort((a , b) => a - b).reduce((prev, curr, index, array) => (curr === index + array[0]) ? prev : index + array[0]++ , 0)
+
+// console.log(findNumber([1,3,4,5,6,7,8]))
+// console.log(findNumber([7,8,1,2,4,5,6]))
+// console.log(findNumber([1,2,3,5]))
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Написать функцию которая принимает в аргумменты ряди и строки и создать матрицу по этим параметрам. Пример
+// const matrix = (row, colum) 
+
+// const matrix = ( row, col) => [...Array(row)].map((el, i) => [...Array(col)].map((el, j) => (i + 1) * (j + 1)))
+// console.log(matrix(3, 4))
+
+///////////////////////////////////////////////////////////////////////////////////////////
+// Учитывая целое число, определите, квадратное ли это число:
+
+// const isSqure = num => typeof num !== 'number' 
+//   ? false 
+//   : Math.sqrt(num) === Number(Math.sqrt(num).toFixed())
+
+// console.log(isSqure(4))
+// console.log(isSqure(26))
+
+// const isSquare2 = (n) => {
+//   return Math.sqrt(n) % 1 === 0;
+// }
+
+// console.log(isSquare2(4))
+// console.log(isSquare2(26))
+
+///////////////////////////////////////////////////////////////////////////////////////////////
+// . Напишите функцию, toCase которая принимает строку и 
+// //возвращает ее в нижнем и верхнем регистре с ' - ' разделителем в качестве.
+// //Пример: toCase('Mthatha')должен вернуться 'mthatha-MTHATHA'.
+
+// const toCase = str => str.toLowerCase() + "-" + str.toUpperCase()
+// console.log(toCase("Mthatha"))
+
+/////////////////////////////////////////////////////////////////////////////////////
+// пин код может состоять с 4 или 6 целых цифр(никаких символов типа .,\/*-+?:%;№""!()), 
+//написать функцию которая будет валидировать введенный пин. 
+//функция должна вернуть true or false
+    
+// const validatePIN = str =>  str.length !== 4 && str.length !== 6 
+//   ? false 
+//   : str.length !== String(Number(str).toFixed()).length ? false 
+//     : Number(str) < 0 ? false : true
+
+
+// console.log(validatePIN("1234"))
+// console.log(validatePIN("123456"))
+// console.log(validatePIN("1"))
+// console.log(validatePIN("12"))
+// console.log(validatePIN("1234.0"))
+// console.log(validatePIN("12345"))
+// console.log(validatePIN("12-457"))
+// console.log(validatePIN("-1234"))
+// console.log(validatePIN("1.234"))
+// console.log(validatePIN("-2.234"))
+// console.log(validatePIN("00000000"))
+
+////////////////////////////////////////////////////////////////////////////////////
+// Проверка URL на валидность. Передаем урл функции и проверяем 
+//валидное оно или нет (возращаем тру или фолс). 
+//Критерии: Урл должен начинаться с http:// иили 
+//https:// и заканчиваться на .php или .html. 
+//Например - http://site.ru/index.php - валидный,
+// http://site.com - не валидный, 
+//site.ru/index.php - не валидный
+
+
+// const isValidate = str => {
+//   if ((str.indexOf('https://') === 0 || str.indexOf('http://') === 0) && (str.slice(-'.php'.length) === '.php' || str.slice(-'.html'.length) === '.html')) {
+//     return "валидный"
+//   }
+
+//   return "не валидный"
+// }
+
+// const isValidate = str => ((str.indexOf('http://') === 0 || str.indexOf('http://') === 0) 
+//   && (str.slice(-'.php'.length) === '.php' || str.slice(-'.html'.length) === '.html')) 
+//   ? "валидный"
+//   : "не валидный"
+    
+// console.log(isValidate('http://site.ru/index.php'))
+// console.log(isValidate('http://site.com'))
+// console.log(isValidate('site.ru/index.php'))
+// console.log(isValidate('site.http.ru/index.php'))
+
+////////////////////////////////////////////////////////////////////////////////////////
+
+// const toInt = arr => Number.parseInt(arr.join(''), 2)
+// console.log(toInt([1, 0, 0, 1]))
+// console.log(toInt([0, 0, 1, 1]))
+// console.log(toInt([0, 0, 0, 1]))
+
+////////////////////////////////////////////////////////////////////////////////////
+// Реализуйте функцию union(), которая объединит уникальные s
+//элементы всех массивов, переданных ей. Пример использования: 
+//union([1, 2, 2, 3], [101, 2, 1, 10], [2, 1]) 
+//Результат выполнения: [1, 2, 3, 101, 10].
+
+//const union = (...arg) => [...arg].flat(1).filter((el, i, arr) => arr.indexOf(el) === i) 
+
+// const union = (...arg) => [...new Set([...arg].flat(Infinity))]
+
+// console.log(union([1, 2, 2, 3], [101, 2, 1, 10], [2, 1]));
+
+//////////////////////////////////////////////////////////////////////////////////////////
+// Написать функцию, которая принимает 2 строки со знаками:
+// ! - вес 2
+// ? - вес 3
+// Нужно сравнить вес этих строк.
+
+// const f = (a, b) => {
+//   const left = a.split('').reduce((sum, el) => el === "!" ? sum += 2 : sum += 3 ,0)
+//   const right = b.split('').reduce((sum, el) => el === "!" ? sum += 2 : sum += 3 ,0)
+  
+//   return left === right ? "ROUND" : left > right ? "LEFT" : "RIGHT"
+// }
+  
+
+// console.log( f('!!', '??') ) // right
+// console.log( f('!!!', '??') ) // round
+// console.log( f('!??', '?!!') ) // left
+
+/////////////////////////////////////////////////////////////////////////////////////////////
