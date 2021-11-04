@@ -397,19 +397,19 @@
 // }
 ////////////////////////////////////////////////////////////////
 
-const isEmpty = obj => Object.keys(obj).length === 0 ? true :
-  !Object.keys(obj).filter(key => obj[key] || obj[key] === 0 || obj[key] === false).length
+// const isEmpty = obj => Object.keys(obj).length === 0 ? true :
+//   !Object.keys(obj).filter(key => obj[key] || obj[key] === 0 || obj[key] === false).length
 
-// const isEmpty = (object) => {
-//   const objectKeys = Object.keys(object);
-//   if (objectKeys.length === 0) {
-//     return true;
-//   }
+// // const isEmpty = (object) => {
+// //   const objectKeys = Object.keys(object);
+// //   if (objectKeys.length === 0) {
+// //     return true;
+// //   }
 
-//   return !objectKeys.filter((key) => object[key] || object[key] === 0 || object[key] === false).length;
-// }
+// //   return !objectKeys.filter((key) => object[key] || object[key] === 0 || object[key] === false).length;
+// // }
 
-console.log(isEmpty({ a: 1, b: undefined }));
-console.log(isEmpty({ a: undefined }));
+// console.log(isEmpty({ a: 1, b: undefined }));
+// console.log(isEmpty({ a: undefined }));
 
 
