@@ -406,6 +406,7 @@
 // //     return true;
 // //   }
 
+
 // //   return !objectKeys.filter((key) => object[key] || object[key] === 0 || object[key] === false).length;
 // // }
 
@@ -413,3 +414,29 @@
 // console.log(isEmpty({ a: undefined }));
 
 
+// //   return !objectKeys.filter((key) => object[key] || object[key] === 0 || object[key] === false).length;
+// // }
+
+// console.log(isEmpty({ a: 1, b: undefined }));
+// console.log(isEmpty({ a: undefined }));
+// const a = { a: 1 }
+// const b = { a: 1, b: 1 }
+// const c = { a: 1, b: 2 }
+
+// const isEqual = (obj1, obj2) => {
+//   if (typeof obj1 !== 'object' && typeof obj2 !== 'object') {
+//     return 'enter object'
+//   }
+
+//   // if ()
+
+//   return Object.keys(obj1).length !== Object.keys(obj1).length ? false :
+//     Object.keys(obj1).forEach(key => obj1.key === obj2.key && obj1[key] === obj2[key])
+  
+// }
+
+
+// console.log(isEqual(a, 2));
+// console.log(isEqual(c, b));
+
+/////////////////////////////////////////////////////////////////////////////////
