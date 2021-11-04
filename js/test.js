@@ -481,3 +481,119 @@
 // console.log( f('!??', '?!!') ) // left
 
 /////////////////////////////////////////////////////////////////////////////////////////////
+
+
+// const str = "123.012ssd"
+// const num = 55
+
+// console.log(parseInt(str));
+// console.log(parseFloat(str));
+// console.log(num.toLocaleString('ar-EG'));
+// console.log(num.toLocaleString('ru-Ru'));
+// console.log(num.toLocaleString('zh-Hans-CN-u-nu-hanidec'));
+
+// for (let i = 0; i < str.length; i ++) {
+//   console.log(str[i]);
+// }
+
+// String.prototype.splite2 = function(start, end) {
+//  let res = []
+// }
+
+/////////////////////////////////////////////
+
+// Array.prototype.reduce1 = function (cb, initial) {
+//   let res = initial
+
+//   for (let i = 0; i < this.length; i += 1) {
+//     // res = cb.call(null, (res, this[i], i, this))
+
+//     res = cb(res, this[i], i, this)
+//     // return res
+//   }
+
+//   return res
+// }
+
+// console.log([1,2,3].reduce1((sum, el, i, arr) => sum += el, 0));
+
+
+////////////////////////////////////////////////////////////////
+
+// console.log(['s', 'o', 'r', 'r', 'y'].join("+"));
+
+// Array.prototype.join1 = function(sep) {
+//   // return this.reduce((res, el) => res += el + sep, "").slice(0, -sep.length) 
+//   return this.reduce((prev, item) => item === this[this.length - 1] ? prev += item : prev += item + sep, '')
+// }
+
+
+// console.log(['s', 'o', 'r', 'r', 'y'].join1("+"));
+// console.log(['s', 'o', 'r', 'r', 'y'].join1("+?+"));
+
+/////////////////////////////////////////////////////////////////
+/*
+function a(cb){
+  console.log(this)
+   return cb
+ }
+ 
+ function b( cb){
+  console.log(this)
+   return cb
+ }
+ 
+ function c(cb){
+  console.log(this)
+   return cb
+ }
+ 
+ function d(cb){
+  console.log(this)
+   return cb
+ }
+ 
+ 
+ function runner(args){
+ 
+ let aContext = this.a
+ let bContext = this.b
+ let cContext = this.c
+ let dContext = this.d
+ 
+ return a.bind(aContext, b.bind(bContext, c.bind(cContext, d.bind(dContext))))
+ 
+ }
+  
+ runner(1)(2)(3)(4)(5)
+*/
+
+//////////////////////////////////////////////////////////////////////////////////
+
+// function A(){
+//   this.x = 0
+// }
+
+// A.prototype.add = function(num) {
+//   this.x += num
+//   return this
+// }
+
+// A.prototype.res = function() {
+//   return this.x
+// }
+
+// A.prototype.minus = function(value) {
+//   this.x -= value
+//   return this
+// }
+
+// console.log((new A).add(1).add(2).minus(4).res());
+
+//////////////////////////////////////////////////////////////////////////////////////
+
+// String.prototype.charAt1 = function(idx) {
+//   return this[idx]
+// }
+
+// console.log('1234'.charAt1(2));
