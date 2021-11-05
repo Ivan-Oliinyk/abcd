@@ -597,3 +597,78 @@ function a(cb){
 // }
 
 // console.log('1234'.charAt1(2));
+
+// JavaScript Sequential Search Algorithm Example******************************************
+
+// const DOES_NOT_EXIST = -1;
+
+// function sequentialSearch(array, value, equalsFn = defaultEquals) {
+//   for (let i = 0; i < array.length; i++) {
+//     if (equalsFn(value, array[i])) {
+//       return i;
+//     }
+//   }
+//   return DOES_NOT_EXIST;
+// }
+
+// function defaultEquals(a, b) {
+//   return a === b;
+// }
+
+
+// function sequentialSearch(array, value) {
+//   for (let i = 0; i < array.length; i++) {
+//     if (value === array[i]) {
+//       return i;
+//     }
+//   }
+//   return -1
+// }
+
+// let array = [2,1,5,4,3,8,7,6];
+// let value = 2;
+// let index = sequentialSearch(array, value);
+// console.log(`indexOf "${value}"" in array ${array} is "${index}"`);
+
+
+////////////////////////////////////////////////////////////////
+// JavaScript Merge Sort Algorithm Example****************************************
+// function merge(left, right, compareFn) {
+//   let i = 0;
+//   let j = 0;
+//   const result = [];
+//   while (i < left.length && j < right.length) {
+//     result.push(compareFn(left[i], right[j]) === Compare.LESS_THAN ? left[i++] : right[j++]);
+//   }
+//   return result.concat(i < left.length ? left.slice(i) : right.slice(j));
+// }
+
+// function mergeSort(array, compareFn = defaultCompare) {
+//   if (array.length > 1) {
+//     const { length } = array;
+//     const middle = Math.floor(length / 2);
+//     const left = mergeSort(array.slice(0, middle), compareFn);
+//     const right = mergeSort(array.slice(middle, length), compareFn);
+//     array = merge(left, right, compareFn);
+//   }
+//   return array;
+// }
+// const Compare = {
+//   LESS_THAN: -1,
+//   BIGGER_THAN: 1,
+//   EQUALS: 0
+// };
+// function defaultCompare(a, b) {
+//   if (a === b) {
+//     return Compare.EQUALS;
+//   }
+//   return a < b ? Compare.LESS_THAN : Compare.BIGGER_THAN;
+// }
+// let array = [2,1,5,4,3,8,7,6];
+// array = mergeSort(array);
+// console.log(array);
+
+// console.log(  parseFloat('sdda11223'));
+// console.log(  parseFloat('123sdda11223'));
+// console.log(  parseFloat('123.1254sdda11223'));
+  
