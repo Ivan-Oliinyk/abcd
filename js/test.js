@@ -671,4 +671,98 @@ function a(cb){
 // console.log(  parseFloat('sdda11223'));
 // console.log(  parseFloat('123sdda11223'));
 // console.log(  parseFloat('123.1254sdda11223'));
-  
+  // console.log('object');
+
+//   const str = 'Ехал Грека через реку'
+
+//   console.log(str.replace('Грека', "Sara"));
+//   console.log(str);
+
+//   console.log(str.search('Грека'));
+//  console.log(str.match('Грека'));
+
+// console.log(parseFloat('23.57px'));
+// console.log(parseInt('23.57px'));
+
+// const obj = {
+//   name: 'Ivan',
+//   age: 30,
+//   haveCar: true
+// }
+
+// const obj2 = Object.assign({}, obj)
+
+// console.log(obj2)
+// console.log(obj)
+// console.log(obj2 === obj)
+
+// const obj1 = obj
+// console.log(obj1 === obj)
+
+// const obj3 = Object.create(obj, {})
+// console.log(obj3);
+
+const obj = { 0: 'a', 1: 'b', 2: 'c' };
+
+// console.log(Object.getOwnPropertyNames(obj));
+// Object.getOwnPropertyNames(obj).forEach((el) => console.log(`${el}: ${obj[el]}`))
+
+// console.log(Object.getPrototypeOf(obj));
+
+// const obj1 = Object.create(obj)
+
+// console.log(Object.getPrototypeOf(obj1) === obj);
+
+// const o = new Object()
+
+// o.prop = "yes"
+
+// console.log(o.hasOwnProperty("prop"));
+
+// delete o.prop
+// console.log(o)
+
+// console.log(o.hasOwnProperty("prop"))
+
+// console.log(null === null);
+// console.log(Object.is(null, undefined));
+// console.log(0 === -0);
+// console.log(Object.is(0, -0));
+
+// console.log(Object.keys(obj));
+// console.log(Object.keys(obj1));
+// console.log(Object.values(obj));
+// console.log(Object.entries(obj));
+// Object.entries(obj).forEach(el => console.log(`${el[0]} => ${el[1]}`));
+
+// String.prototype.lastIndexOf1 = function (value, start = 0) {
+//   let res = -1
+
+//   for(let i = this.length-1; i >= start; i -= 1 ) {
+//     if (value === this[i]) {
+//       return res = i
+//     }
+//   }
+
+//   return res
+// }
+
+// console.log('aefedwe'.lastIndexOf1("e"));
+
+// String.prototype.trim1 = function() {
+//   let res = ''
+
+//   for(let i = 0; i < this.length; i += 1) {
+//     if (this[i] + this[i+1] !== "  " && this[i] + this[i-1] !== "  ") {
+//       res += this[i]
+//     }
+//   }
+
+//   return res
+
+//   // return this.split('  ').join('')
+// } 
+
+// console.log('s2  2wq3   3d1 14    4s5     5s'.trim1());
+
+// Array.prototype.reduce1 = function ()
