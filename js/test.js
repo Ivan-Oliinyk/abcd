@@ -766,3 +766,4 @@ const obj = { 0: 'a', 1: 'b', 2: 'c' };
 // console.log('s2  2wq3   3d1 14    4s5     5s'.trim1());
 
 // Array.prototype.reduce1 = function ()
+

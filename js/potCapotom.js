@@ -97,13 +97,15 @@
 // ************* reverse() *****************************************************
 
 // Array.prototype.reverse1 = function() {
-//   const newArr = []
+//   // const newArr = []
 
-//   for (let i = this.length - 1; i >= 0; i -= 1) {
-//     newArr.push(this[i])
-//   }
+//   // for (let i = this.length - 1; i >= 0; i -= 1) {
+//   //   newArr.push(this[i])
+//   // }
 
-//   return newArr
+//   // return newArr
+
+//   return this.map((el, i, arr) => arr[(this.length - 1) - i])
 // }
 
 // console.log([1, 2, 3, 4, 5].reverse1());
@@ -630,22 +632,182 @@
 
 ///////////////////*********myFlat() */
 
-Array.prototype.myFlat = function (n = 1) {
-  let res = [];
+// Array.prototype.myFlat = function (n = 1) {
+//   let res = [];
 
-  function flatArr(arr, n) {
-      arr.forEach(item => {
-          if (Array.isArray(item) && n !== 0) {
-              flatArr(item, n - 1)
-          } else {
-              res.push(item)
-          }
-      })
-  }
+//   function flatArr(arr, n) {
+//       arr.forEach(item => {
+//           if (Array.isArray(item) && n !== 0) {
+//               flatArr(item, n - 1)
+//           } else {
+//               res.push(item)
+//           }
+//       })
+//   }
 
-  flatArr(this, n)
+//   flatArr(this, n)
 
-  return res;
-}
+//   return res;
+// }
 
-console.log([1,[2,[3,[4,[5,[6,[7,[8,[9,[10]]]]]]]]]].myFlat(-2));
+// console.log([1,[2,[3,[4,[5,[6,[7,[8,[9,[10]]]]]]]]]].myFlat(-2));
+
+// console.log([1,2,3,4].forEach(el => el > 2))
+
+
+
+// String.prototype.myIndexOf = function (str) {
+//   return this.split('').reverse().reduce((res, el, i, arr) => 
+//     arr.slice(i, i + str.length).reverse().join('') === str ? res = i : res,
+//     -1
+//   )
+// }
+
+// console.log('asdfasas'.myIndexOf('as'));
+
+
+// Array.prototype.myMap = function (cb, thisArgs) {
+//   const res = []
+
+//   for(let i = 0; i < this.length; i+= 1) {
+//     res.push(cb.call(thisArgs || null, this[i], i, this))
+//   }
+
+//   return res
+// }
+
+// console.log([1,2,3,4].myMap(el => el *2));
+
+// Array.prototype.myMap = function (cb, thisArgs) {
+//   const res = []
+
+//   for (let i = 0; i < this.length; i += 1 ) {
+//     res.push(cb.call(thisArgs, this[i], i , this))
+//   }
+
+//   return res
+// }
+
+// console.log([1,2,3].myMap(el => el * 3));
+
+// Array.prototype.myReduce = function (cb, init = this[0]) {
+//   let res = init
+
+//   for (let i = 0; i < this.length; i += 1) {
+//     res = cb.call(null, res, this[i], i, this)
+//   }
+
+//   return res
+// }
+
+// console.log([1,2,3].myReduce((sum, el) => sum += el, 0));
+
+// Array.prototype.myReduce = function (cb, init = this[0]) {
+//   let res = init
+
+//   for (let i = 0; i < this.length; i += 1) {
+//     res = cb.call(null, res, this[i], i, this)
+//   }
+
+//   return res
+// }
+
+// console.log([1,2,3].myReduce((sum, el) => sum += el, 0));
+
+// Array.prototype.myEvery = function (cb, thisArg) {
+//   for (let i = 0; i < this.length; i += 1) {
+//     if (!cb.call(thisArg || null, this[i], i, this)) {
+//       return false
+//     }
+//   }
+
+//   return true
+// }
+
+// console.log([2,3,4].myEvery(el => el > 2));
+
+// Array.prototype.myEvery = function (cb, thisArgs) {
+//   for (let i = 0; i < this.length; i += 1) {
+//     if (!cb.call(thisArgs || null, this[i], i, this)) {
+//       return false
+//     }
+//   }
+
+//   return true
+// }
+
+// console.log([3, 6, 9].myEvery(el => el % 3));
+
+// Array.prototype.mySome = function (cb, thisArgs) {
+//   for (let i = 0; i < this.length; i += 1) {
+//     if (cb.call(thisArgs || null, this[i], i, this)) {
+//       return true
+//     }
+//   }
+
+//   return false
+// }
+
+// console.log([1,2,3,4,5].mySome(el => el > 5));
+
+// const arr = [1, 3, 6, 6, 7, 8, 8, 8, 9]
+// const arr1 = [1, 2, 3, 89, 3, 21, 4, 4]
+
+// function deleteDubl ([...args]) {
+//   return [...args].filter((el, i, arr) => arr.indexOf(el) === i)
+// }
+
+// console.log(deleteDubl(arr, arr1));
+
+// console.log('sadq1ds123sd'.match('123'));
+// console.log('sadq1ds123sd'.replace('123', '666'));
+// console.log('sadq1ds123sd'.search('123'));
+
+
+// Number.prototype.myFixed = function (n = 0) {
+//   let res = 0 
+
+//   for (let i = 0; i < String(this).length; i+= 1) {
+    
+//   }
+
+//   return res
+// }
+
+// let num  = 123.5634
+
+// console.log(num.toFixed(), '|',num.myFixed())
+// console.log(num.toFixed(1), '|', num.myFixed(1))
+// console.log(num.toFixed(2), '|', num.myFixed(2))
+// console.log(num.toFixed(3), '|', num.myFixed(3))
+// console.log(num.toFixed(6), '|', num.myFixed(6))
+// console.log(45.999.toFixed(2), '|', 45.999.myFixed(2))
+
+
+// Math.myRound = function (n) {
+//   // return Number(String(n).slice(String(n).indexOf('.') + 1,  String(n).indexOf('.') + 2) > 4 
+//   //   ? String(n + 1).slice(0, String(n).indexOf('.')) 
+//   //   : String(n).slice(0, String(n).indexOf('.'))
+//   // )
+
+// if (n >= 0) {
+//     return Number(String(n).slice(String(n).indexOf('.') + 1,  String(n).indexOf('.') + 2) > 4 
+//       ? String(n + 1).slice(0, String(n).indexOf('.')) 
+//       : String(n).slice(0, String(n).indexOf('.'))
+//   }
+  
+// }
+
+// console.log(Math.round(12.47), '|', Math.myRound(12.47));
+// console.log(Math.round(12.57), '|', Math.myRound(12.57));
+// console.log(Math.round(0.57), '|', Math.myRound(0.57));
+// console.log(Math.round(-20.51), '|', Math.myRound(-20.51))
+// console.log(Math.round(-20.5), '|', Math.myRound(-20.5))
+// console.log(Math.round(-20.49), '|', Math.myRound(-20.49))
+// console.log(Math.round(-20.4), '|', Math.myRound(-20.4))
+
+// console.log(void 0);
+// console.log(undefined);
+// console.log(void 0 === undefined);
+
+const arr = 
