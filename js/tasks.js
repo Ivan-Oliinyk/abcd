@@ -287,4 +287,74 @@
 
 // s
 
+// function EventDebounce (bounceTime) {
+//   this.subscribes = []
+//   this.events = []
+//   this.archive = []
 
+//   setInterval(() => {
+//       const event = this.events.shift()
+//       if (event) {
+//           this.subscribes.forEach(subscribe => {
+//               subscribe.call(null, event)
+//           })
+//       }
+//       // console.log(event)
+//       this.archive.push(event)
+//   }, bounceTime);
+// }
+
+// EventDebounce.prototype.subscribe = function (cb) {
+//   this.subscribes.push(cb)
+//   return this
+// }
+
+// EventDebounce.prototype.emit = function (obj) {
+//   this.events.push(obj);
+//   return this
+// }
+
+// let obj = new EventDebounce(1000)
+
+// obj.subscribe((even) => console.log(even))
+// obj.subscribe((even) => console.log(even))
+// obj.subscribe((even) => console.log(even))
+// obj.emit({a: 13})
+// obj.emit({a: 334535})
+
+function EventDebount (dt) {
+  this.dt = dt
+  this.events = []
+  this.sibscribe = []
+}
+
+EventDebount.prototype.subscribe = function (cb) {
+  this.sibscribe.push(cb)
+  return this
+}
+
+EventDebount.prototype.emit = function (obj) {
+  this.events.push(obj)
+  return this
+}
+
+EventDebount.prototype.init = function () {
+  setInterval(() => {
+    const event = this.events.shift()
+
+      if (event) {
+        
+        this.sibscribe.forEach(fn => fn.call(null, event))
+        , this.dt
+      }
+    }
+  )
+}
+const eventDebount = new EventDebount(500)
+eventDebount.subscribe((e) => console.log("111"))
+eventDebount.subscribe((e) => console.log("222@@@"))
+eventDebount.subscribe((e) => console.log("Hello333???"))
+eventDebount.emit('Poly').emit('Joy')
+eventDebount.init()
+
+eventDebount.emit('Dodo')

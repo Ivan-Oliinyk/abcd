@@ -702,7 +702,7 @@ function a(cb){
 // const obj3 = Object.create(obj, {})
 // console.log(obj3);
 
-const obj = { 0: 'a', 1: 'b', 2: 'c' };
+// const obj = { 0: 'a', 1: 'b', 2: 'c' };
 
 // console.log(Object.getOwnPropertyNames(obj));
 // Object.getOwnPropertyNames(obj).forEach((el) => console.log(`${el}: ${obj[el]}`))
@@ -766,4 +766,177 @@ const obj = { 0: 'a', 1: 'b', 2: 'c' };
 // console.log('s2  2wq3   3d1 14    4s5     5s'.trim1());
 
 // Array.prototype.reduce1 = function ()
+
+// const arr = [0, "2", "Sasha", 3, "6", 8, 'Vasia', 91, null, undefined]
+// console.log(arr.find(el => el === 'Vasia'));
+
+// console.log(arr.filter(el => typeof el === 'string' && isNaN(el)).join('').match("Vasia")[0]);
+
+// const arr = [
+//   {xLt: 0, yLt: 0, xLb: 10, yLb: 10, xRt: 10, yRt: 0, xRb: 10, yRb: 10}
+// ]
+
+// function square (arr) {
+//   return (arr[0]["xRt"] - arr[0]["xLt"]) * (arr[0]["yLb"] - arr[0]["yLt"])
+// }
+
+// console.log(square(arr))
+
+// console.log(Object.entries(arr[0]));
+
+// const arr = [[1,2,3], 5, {}, ['a', 'b'], 5, 6]
+
+// Array.prototype.myFind = function (value) {
+//   return this.flat(Infinity).filter(el => el === value)
+// }
+
+// console.log(arr.myFind(5));
+
+// const matrix = [
+//   [1,2,3,4,5],
+//   [7,8,3,9,5],
+//   [8,7,6,4,5],
+//   [9,2,6,4,5],
+//   [1,2,3,6,5]
+// ]
+
+// function sortMatrix(arr) {
+//   const newMatrix = []
+//   let iter = []
+
+  // return arr.flat(1).sort((a, b) => a -b).reduce((sum, el, i, arr) => el !== arr[i+1]  , [])
+
+//   const t = arr.flat(1).sort((a, b) => a -b)
+  
+//   console.log(t);
+
+//   for (let i = 0; i < t.length; i += 1) {
+//     if (t[i] === t[i - 1] || t[i] === t[i + 1]) {
+//       iter.push((t[i]))
+//     } else {
+//       newMatrix.push(iter)
+//       iter = []
+//     }
+//   }
+
+//   return newMatrix
+// }
+
+// console.log(sortMatrix(matrix))
+//////////////////////////1111111111111111111111111111111111111111/////////////////////////////////////
+
+//////////////////////////////////////////////////////////////////////////////
+// function EventDebounce (bounceTime) {
+//   this.subscribes = []
+//   this.events = []
+//   this.archive = []
+
+//   setInterval(() => {
+//       const event = this.events.shift()
+//       if (event) {
+//           this.subscribes.forEach(subscribe => {
+//               subscribe.call(null, event)
+//           })
+//       }
+//       // console.log(event)
+//       this.archive.push(event)
+//   }, bounceTime);
+// }
+
+// EventDebounce.prototype.subscribe = function (cb) {
+//   this.subscribes.push(cb)
+//   return this
+// }
+
+// EventDebounce.prototype.emit = function (obj) {
+//   this.events.push(obj);
+//   return this
+// }
+
+// let obj = new EventDebounce(1000)
+
+// obj.subscribe((even) => console.log(even))
+// obj.subscribe((even) => console.log(even))
+// obj.subscribe((even) => console.log(even))
+// obj.emit({a: 13})
+// obj.emit({a: 334535})
+
+////////////////////////////222222222222222222222222222222222222222222222/////////////////////////////////////
+
+// function EventDebount (dt) {
+//   this.dt = dt
+//   this.events = []
+//   this.sibscribe = []
+//   this.arch = []
+// }
+
+// EventDebount.prototype.subscribe = function (cb) {
+//   this.sibscribe.push(cb)
+//   this.sinc(cb)
+//   return this
+// }
+
+// EventDebount.prototype.emit = function (obj) {
+//   this.events.push(obj)
+// }
+
+// EventDebount.prototype.init = function () {
+//   setInterval(() => {
+//     const shve = this.events.shift()
+//     this.sibscribe.forEach(fn => fn.call(null, shve))
+//     this.arch.push(shve)
+
+//   }, this.dt)
+// }
+
+// EventDebount.prototype.sinc = function (cb) {
+//   this.arch.forEach((ev) => cb.call(null, ev))
+// }
+
+///////////////////////////////////////////////////////////
+function EventDebount (dt) {
+  this.dt = dt
+  this.events = []
+  this.sibscribe = []
+  this.cursor = 0
+}
+
+EventDebount.prototype.subscribe = function (cb) {
+  this.sibscribe.push(cb)
+  this.synq(cb)
+  return this
+}
+
+EventDebount.prototype.emit = function (obj) {
+  this.events.push(obj)
+  return this
+}
+
+EventDebount.prototype.synq = function(cb) {
+  this.events.slice(0, this.cursor).forEach(evt => cb.call(null, evt))
+  return this
+}
+
+EventDebount.prototype.init = function () {
+  const init = setInterval(() => { 
+    if (this.events[this.cursor]) {
+      this.sibscribe.forEach(el => el.call(null, this.events[this.cursor]))
+      this.cursor = this.cursor + 1
+    } else {
+      clearInterval(init)
+    }
+  }, this.dt )
+}
+
+const eventDebount = new EventDebount(500)
+eventDebount.subscribe(() => console.log("1"))
+eventDebount.subscribe(() => console.log("222"))
+eventDebount.subscribe(() => console.log("333333333"))
+
+eventDebount.emit('Poly').emit('Doly')
+
+eventDebount.init()
+
+eventDebount.emit('Joly')
+
 
