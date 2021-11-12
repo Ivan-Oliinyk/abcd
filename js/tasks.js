@@ -322,39 +322,274 @@
 // obj.emit({a: 13})
 // obj.emit({a: 334535})
 
-function EventDebount (dt) {
-  this.dt = dt
-  this.events = []
-  this.sibscribe = []
-}
+// function EventDebount (dt) {
+//   this.dt = dt
+//   this.events = []
+//   this.subsribe = []
+// }
 
-EventDebount.prototype.subscribe = function (cb) {
-  this.sibscribe.push(cb)
-  return this
-}
+// EventDebount.prototype.subscribe = function (cb) {
+//   this.subsribe.push(cb)
+//   return this
+// }
 
-EventDebount.prototype.emit = function (obj) {
-  this.events.push(obj)
-  return this
-}
+// EventDebount.prototype.emit = function (obj) {
+//   this.events.push(obj)
+//   return this
+// }
 
-EventDebount.prototype.init = function () {
-  setInterval(() => {
-    const event = this.events.shift()
+// EventDebount.prototype.init = function () {
+//   setInterval(() => {
+//     const event = this.events.shift()
 
-      if (event) {
+//       if (event) {
         
-        this.sibscribe.forEach(fn => fn.call(null, event))
-        , this.dt
+//         this.subsribe.forEach(fn => fn.call(null, event))
+//         , this.dt
+//       }
+//     }
+//   )
+// }
+// const eventDebount = new EventDebount(500)
+// eventDebount.subscribe((e) => console.log("111"))
+// eventDebount.subscribe((e) => console.log("222@@@"))
+// eventDebount.subscribe((e) => console.log("Hello333???"))
+// eventDebount.emit('Poly').emit('Joy')
+// eventDebount.init()
+
+// eventDebount.emit('Dodo')
+
+// function EventDebount (time) {
+//   this.events = []
+//   this.subsribe = []
+//   this.cursor = 0
+
+//   setInterval(() => {
+//     if (this.events[this.cursor])  {
+//       this.subsribe.forEach(sub => sub.call(null, this.events[this.cursor]))
+//       this.cursor += 1
+//     }
+//   }, time)
+// }
+
+// EventDebount.prototype.subscribe = function (cb) {
+//   this.subsribe.push(cb)
+//   this.synq(cb)
+//   return this
+// }
+
+// EventDebount.prototype.emit = function (obj) {
+//   this.events.push(obj)
+//   return this
+// }
+
+// EventDebount.prototype.synq = function(cb) {
+//   this.events.slice(0, this.cursor).forEach(event => cb.call(null, event))
+//   return this
+// }
+
+// const eventDebount = new EventDebount(100)
+
+// eventDebount.subscribe((e) => console.log(`${e} => 1 `))
+//   .subscribe((e) => console.log(`${e} => 2 `))
+//   .subscribe((e) => console.log(`${e} => 3 `, '\n '))
+
+// eventDebount.emit('Poly').emit('Doly')
+
+// setTimeout(() => {
+//   console.log('new EMIT');
+//   eventDebount.emit('Joly').emit('Sarah')
+// }, 2000)
+
+// setTimeout (() => {
+//   console.log("new Subscribe");
+//   eventDebount.subscribe((e) => console.log(`${e} => 4 `))
+// }, 3500) 
+
+
+// function Sum (...args) {
+//   this.n = [...args].reduce((sum, el) => sum += el, 0)
+// }
+
+// Sum.prototype.add = function (num) {
+//   this.n += num
+//   return this
+// }
+
+// Sum.prototype.sum = function() {
+//   return this.n
+// }
+
+// const sum = new Sum (1,2,3)
+// console.log(sum);
+
+// sum.add(2).add(2).add(2).add(2).add(2)
+// console.log(sum);
+
+// console.log(sum.res())
+
+/////////////////////////////////////////////////////////////
+// function Sum (...arg) {
+//   const n = [...arg].reduce((sum, num) => sum += num, 0)
+
+//   this.add = add.bind(this, n)
+//   this.sum = sum.bind(this, n)
+// }
+
+// Sum.prototype.add = function(n, num) {
+//   n += num
+//   return this
+// }
+
+// Sum.prototype.sum = function (n) {
+//   return n
+// }
+
+// const sum = new Sum(1,2,3)
+
+// sum.sum()
+// //////////////////////////////////////////////////////////////
+// function Sum (...args) {
+//   Object.defineProperty(this, 'sum', {
+//     configurable: false,
+//     enumerable: true,
+//     writable: false,
+
+//     get: function() {
+//       return sum = [...args].reduce((sum, el) => sum += el, 0 )
+//     },
+
+//     set: function() { }
+     
+//   })
+
+
+//   this.add = function(num) {
+//     sum += num
+//     return this
+//   }
+
+//   this.res = function() {
+//     return sum
+//   }
+// }
+
+// const sum = new Sum(1, 2, 3)
+
+/////////////////////////////////////////
+//Сложить матрицу как листок
+
+
+// const matrix = [
+//   [1,4,2,1],
+//   [1,3,7,1],
+//   [1,2,3,1],
+//   [1,4,2,8]
+// ]
+
+
+// function sumM(arr) {
+//   return arr.reduce((sum, el, i, arr) =>
+//     console.log(el[i] + el[el.length -1 -i])
+//   , '')
+// }
+
+// function sumMatr(arr) {
+//   const newArr = []
+
+//   for(let i = 0; i < arr.length; i += 1) {
+//     for(let j = 0;  j < arr[i].length; j += 1) {
+      
+//     }
+//   }
+
+//   return newArr
+// }
+
+
+
+// console.log(sumMatr(matrix))
+
+// const newM = matrix.reduce((sum, el, i, arr) => {
+//   console.log(i);
+//   // console.log(el[i] + el[el.length - 1 -i]);
+//   // (el[i] + el[el.length - 1 -i]) 
+
+//   // console.log(el[i]);
+//   // console.log(el[el.length - 1 -i])
+//   // console.log(el[i] + el[el.length - 1 -i])
+
+//   // + (arr[arr.length - 1][i] + arr[arr.length - 1][i])
+// })
+
+  
+
+// function sumArr(arr) {
+//   return arr.reduce((sum, el, i, arr) => {
+//     console.log(el[i])
+//     console.log(el[el.length - 1 - i])
+//     console.log(sum)
+       
+//     sum.push(el[i] + el[el.length - 1 -i])
+//   }, [])
+// } 
+
+// console.log(sumArr(matrix));
+
+// function paper (matrix) {
+//   let width = matrix[0].length;
+//   let height = matrix.length;
+//   let res = []
+
+//   for (let y = 0; y < height; y++)
+//     for (let x = 0; x < width; x++) {
+//       if (x === 0)
+//         res.push(
+//           [matrix[y][x] + matrix[y][width-x-1] + matrix[height-y-1][x] + matrix[height-y-1][width-x-1]]
+//         )
+//   }
+
+//   console.dir( res );
+// }
+
+function paper(a) {
+  
+  const res = []
+
+  for (let i = 0; i < a.length; i += 1) {
+    let arr1 = []
+
+    for (let j = 0; j < a[i].length; j += 1) {
+      arr1.push()
+
+      console.log(a[i][j] < a[i].length / 2)
+
+      if (arr1.length === 2) {
+        res.push(arr1)
+        arr1 = []
       }
     }
-  )
+  }
+ 
+  return res
 }
-const eventDebount = new EventDebount(500)
-eventDebount.subscribe((e) => console.log("111"))
-eventDebount.subscribe((e) => console.log("222@@@"))
-eventDebount.subscribe((e) => console.log("Hello333???"))
-eventDebount.emit('Poly').emit('Joy')
-eventDebount.init()
 
-eventDebount.emit('Dodo')
+console.log(paper( [
+  [1,  2,  2,  9 ],
+  [1,  27,  3,  1 ],
+  [18,  11,  2,  6],
+  [1,  2,  13,  1]
+] ));
+
+// paper( [
+//   [1,  2,  3,  4,  5 ],
+//   [6,  7,  8,  9,  10],
+//   [11, 12, 13, 14, 15],
+// ] )
+// paper( [
+//   [1,  2,  3,  4,  6 ],
+//   [6,  7,  8,  9,  10],
+//   [11, 12, 13, 14, 15],
+//   [16, 17, 18, 19, 20],
+//   [21, 22, 23, 24, 26],
+// ] )

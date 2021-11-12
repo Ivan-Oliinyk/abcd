@@ -913,30 +913,49 @@ EventDebount.prototype.emit = function (obj) {
 }
 
 EventDebount.prototype.synq = function(cb) {
-  this.events.slice(0, this.cursor).forEach(evt => cb.call(null, evt))
+  this.events.slice(0, this.cursor).forEach(event => cb.call(null, event))
   return this
 }
 
 EventDebount.prototype.init = function () {
   const init = setInterval(() => { 
     if (this.events[this.cursor]) {
-      this.sibscribe.forEach(el => el.call(null, this.events[this.cursor]))
-      this.cursor = this.cursor + 1
+      this.sibscribe.forEach(sub => sub.call(null, this.events[this.cursor]))
+      this.cursor += 1
     } else {
       clearInterval(init)
     }
   }, this.dt )
 }
 
-const eventDebount = new EventDebount(500)
-eventDebount.subscribe(() => console.log("1"))
-eventDebount.subscribe(() => console.log("222"))
-eventDebount.subscribe(() => console.log("333333333"))
+const eventDebount = new EventDebount(100)
+
+eventDebount.subscribe((e) => console.log(`${e} => 1 `))
+  .subscribe((e) => console.log(`${e} => 2 `))
+  .subscribe((e) => console.log(`${e} => 3 `, '\n '))
 
 eventDebount.emit('Poly').emit('Doly')
-
 eventDebount.init()
 
-eventDebount.emit('Joly')
+setTimeout(() => {
+  console.log('new EMIT');
+  eventDebount.emit('Joly').emit('Sarah')
+  eventDebount.init()
+}, 2000)
 
+setTimeout (() => {
+  console.log("new Subscribe");
+  eventDebount.subscribe((e) => console.log(`${e} => 4 `))
+}, 3500) 
 
+// setInterval(() => { 
+  //   if (this.events[this.cursor]) {
+  //     this.sibscribe.forEach(el => el.call(null, this.events[this.cursor]))
+  //     this.cursor += 1
+  //   }
+    
+  //   console.log('9191919191919');
+
+  // }, this.dt )
+
+  // eventDebount.init()
