@@ -894,59 +894,59 @@ function a(cb){
 // }
 
 ///////////////////////////////////////////////////////////
-function EventDebount (dt) {
-  this.dt = dt
-  this.events = []
-  this.sibscribe = []
-  this.cursor = 0
-}
+// function EventDebount (dt) {
+//   this.dt = dt
+//   this.events = []
+//   this.sibscribe = []
+//   this.cursor = 0
+// }
 
-EventDebount.prototype.subscribe = function (cb) {
-  this.sibscribe.push(cb)
-  this.synq(cb)
-  return this
-}
+// EventDebount.prototype.subscribe = function (cb) {
+//   this.sibscribe.push(cb)
+//   this.synq(cb)
+//   return this
+// }
 
-EventDebount.prototype.emit = function (obj) {
-  this.events.push(obj)
-  return this
-}
+// EventDebount.prototype.emit = function (obj) {
+//   this.events.push(obj)
+//   return this
+// }
 
-EventDebount.prototype.synq = function(cb) {
-  this.events.slice(0, this.cursor).forEach(event => cb.call(null, event))
-  return this
-}
+// EventDebount.prototype.synq = function(cb) {
+//   this.events.slice(0, this.cursor).forEach(event => cb.call(null, event))
+//   return this
+// }
 
-EventDebount.prototype.init = function () {
-  const init = setInterval(() => { 
-    if (this.events[this.cursor]) {
-      this.sibscribe.forEach(sub => sub.call(null, this.events[this.cursor]))
-      this.cursor += 1
-    } else {
-      clearInterval(init)
-    }
-  }, this.dt )
-}
+// EventDebount.prototype.init = function () {
+//   const init = setInterval(() => { 
+//     if (this.events[this.cursor]) {
+//       this.sibscribe.forEach(sub => sub.call(null, this.events[this.cursor]))
+//       this.cursor += 1
+//     } else {
+//       clearInterval(init)
+//     }
+//   }, this.dt )
+// }
 
-const eventDebount = new EventDebount(100)
+// const eventDebount = new EventDebount(100)
 
-eventDebount.subscribe((e) => console.log(`${e} => 1 `))
-  .subscribe((e) => console.log(`${e} => 2 `))
-  .subscribe((e) => console.log(`${e} => 3 `, '\n '))
+// eventDebount.subscribe((e) => console.log(`${e} => 1 `))
+//   .subscribe((e) => console.log(`${e} => 2 `))
+//   .subscribe((e) => console.log(`${e} => 3 `, '\n '))
 
-eventDebount.emit('Poly').emit('Doly')
-eventDebount.init()
+// eventDebount.emit('Poly').emit('Doly')
+// eventDebount.init()
 
-setTimeout(() => {
-  console.log('new EMIT');
-  eventDebount.emit('Joly').emit('Sarah')
-  eventDebount.init()
-}, 2000)
+// setTimeout(() => {
+//   console.log('new EMIT');
+//   eventDebount.emit('Joly').emit('Sarah')
+//   eventDebount.init()
+// }, 2000)
 
-setTimeout (() => {
-  console.log("new Subscribe");
-  eventDebount.subscribe((e) => console.log(`${e} => 4 `))
-}, 3500) 
+// setTimeout (() => {
+//   console.log("new Subscribe");
+//   eventDebount.subscribe((e) => console.log(`${e} => 4 `))
+// }, 3500) 
 
 // setInterval(() => { 
   //   if (this.events[this.cursor]) {
@@ -959,3 +959,58 @@ setTimeout (() => {
   // }, this.dt )
 
   // eventDebount.init()
+
+
+  function EventDebount (dt) {
+    this.dt = dt
+    this.events = []
+    this.sibscribe = []
+    this.cursor = 0
+  }
+  
+  EventDebount.prototype.subscribe = function (cb) {
+    this.sibscribe.push(cb)
+    this.synq(cb)
+    return this
+  }
+  
+  EventDebount.prototype.emit = function (obj) {
+    this.events.push(obj)
+    return this
+  }
+  
+  EventDebount.prototype.synq = function(cb) {
+    this.events.slice(0, this.cursor).forEach(event => cb.call(null, event))
+    return this
+  }
+  
+  EventDebount.prototype.init = function () {
+    const init = setInterval(() => { 
+      if (this.events[this.cursor]) {
+        this.sibscribe.forEach(sub => sub.call(null, this.events[this.cursor]))
+        this.cursor += 1
+      } else {
+        clearInterval(init)
+      }
+    }, this.dt )
+  }
+  
+  const eventDebount = new EventDebount(100)
+  
+  eventDebount.subscribe((e) => console.log(`${e} => 1 `))
+    .subscribe((e) => console.log(`${e} => 2 `))
+    .subscribe((e) => console.log(`${e} => 3 `, '\n '))
+  
+  eventDebount.emit('Poly').emit('Doly')
+  eventDebount.init()
+  
+  setTimeout(() => {
+    console.log('new EMIT');
+    eventDebount.emit('Joly').emit('Sarah')
+    eventDebount.init()
+  }, 2000)
+  
+  setTimeout (() => {
+    console.log("new Subscribe");
+    eventDebount.subscribe((e) => console.log(`${e} => 4 `))
+  }, 3500) 

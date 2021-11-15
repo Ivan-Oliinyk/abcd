@@ -552,44 +552,76 @@
 //   console.dir( res );
 // }
 
-function paper(a) {
+// function paper(a) {
   
-  const res = []
+//   const res = []
 
-  for (let i = 0; i < a.length; i += 1) {
-    let arr1 = []
+//   for (let i = 0; i < a.length; i += 1) {
+//     let arr1 = []
 
-    for (let j = 0; j < a[i].length; j += 1) {
-      arr1.push()
+//     for (let j = 0; j < a[i].length; j += 1) {
+//       arr1.push()
 
-      console.log(a[i][j] < a[i].length / 2)
+//       console.log(a[i][j] < a[i].length / 2)
 
-      if (arr1.length === 2) {
-        res.push(arr1)
-        arr1 = []
+//       if (arr1.length === 2) {
+//         res.push(arr1)
+//         arr1 = []
+//       }
+//     }
+//   }
+ 
+//   return res
+// }
+
+function sumMatrix(arr) {
+  let res = []
+  let resDif = []
+
+  for (let i = 0; i < arr.length / 2; i++) {
+    for (let j = 0; j < arr[0].length / 2; j++) {
+      resDif.push(
+        arr[i][j] + 
+        arr[i][arr[0].length - 1 - j] + 
+        arr[arr.length - 1 -i][j] + 
+        arr[arr.length - 1 -i][arr[0].length - 1 -j]
+      )
+
+      if(resDif.length === arr.length / 2) {
+        res.push(resDif)
+        resDif = []
       }
     }
   }
- 
+
   return res
 }
 
-console.log(paper( [
+console.log(sumMatrix( [
   [1,  2,  2,  9 ],
   [1,  27,  3,  1 ],
   [18,  11,  2,  6],
   [1,  2,  13,  1]
 ] ));
 
-// paper( [
-//   [1,  2,  3,  4,  5 ],
-//   [6,  7,  8,  9,  10],
-//   [11, 12, 13, 14, 15],
-// ] )
-// paper( [
-//   [1,  2,  3,  4,  6 ],
-//   [6,  7,  8,  9,  10],
-//   [11, 12, 13, 14, 15],
-//   [16, 17, 18, 19, 20],
-//   [21, 22, 23, 24, 26],
-// ] )
+console.log(sumMatrix( [
+  [1,  2,  2,  9, 1,  2,  2,  9 ],
+  [1,  27,  3,  1, 1,  2,  2,  9 ],
+  [18,  11,  2,  6, 1,  2,  2,  9],
+  [1,  2,  13,  1, 1,  2,  2,  9],
+  [1,  2,  2,  9, 1,  2,  2,  9 ],
+  [1,  27,  3,  1, 1,  2,  2,  9 ],
+  [18,  11,  2,  6, 1,  2,  2,  9],
+  [1,  2,  13,  1, 1,  2,  2,  9]
+] ));
+
+console.log(sumMatrix( [
+  [1,  2,  2,  9, 3, 6 ],
+  [1,  27,  3,  1, 3, 6 ],
+  [18,  11,  2,  6, 3, 6],
+  [1,  2,  13,  1, 3, 6],
+  [18,  11,  2,  6, 3, 6],
+  [1,  2,  13,  1, 3, 6]
+] ));
+
+
