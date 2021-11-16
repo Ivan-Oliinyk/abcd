@@ -113,7 +113,7 @@
 
 // ************* reduse() *****************************************************
 
-// Array.prototype.reduce1 = function (cb, initial) {
+// Array.prototype.reduce1 = function (cb, initial = this[0]) {
 //   let res = initial
 
 //   for (let i = 0; i < this.length; i += 1) {
@@ -388,7 +388,6 @@
   
 //   return this.split("").reverse().reduce((res, el, i, arr) => 
 //     arr.reverse().slice(pos + i, value.length + i).join('') === value ? res = i  : res += 0, -1)
-   
 // }
 
 // console.log('3a1ad1ad1'.indexOf1('ad1'));
@@ -505,8 +504,8 @@
 //     for (let i = a; i < b; i += 1) {
 //       str += this[i]
 //     }
-//   } (a - b < 0) {
-//     for (let i = this.length - b; i < ) {}
+//   } if (a - b < 0) {
+//     for (let i = this.length - b; i += 1) {}
 //   }
 
 //   return str
@@ -526,6 +525,71 @@
 
 
 ////////////////////////////////////////////
+// String.prototype.mySlice= function (start = 0, end = this.length - 1) {
+
+//   let str = '' 
+
+//   if (start < 0){
+//     start = this.length + start 
+//   }
+
+//   if (end < 0){
+//     end = this.length + end
+//   } 
+
+//   for (let idx = start; idx < end; idx++) {
+//       str += this[idx]
+//   }
+
+//   return str
+// }
+
+// console.log('0123456789'.slice());
+// console.log('0123456789'.mySlice());
+
+// console.log('0123456789'.slice(5, 7));
+// console.log('0123456789'.mySlice(5, 7));
+
+// console.log('0123456789'.slice(5, -2));
+// console.log('0123456789'.mySlice(5, -2));
+
+// console.log('0123456789'.slice(-4, -1));
+// console.log('0123456789'.mySlice(-4, -1))
+
+
+// Array.prototype.mySlice = function (start = 0, end = this.length) {
+//   const res = []
+
+//   if (start < 0) {
+//     start = this.length + start
+//   }
+
+//   if (end < 0) {
+//     end = this.length + end
+//   }
+
+//   for (let i = start; i < end; i += 1) {
+//     res.push(this[i])
+//   }
+
+//   return res
+// }
+
+// console.log([1,2,3,4,5,6,7].slice(1,3))
+// console.log([1,2,3,4,5,6,7].mySlice(1,3))
+
+// console.log([1,2,3,4,5,6,7].mySlice(1))
+// console.log([1,2,3,4,5,6,7].slice(1))
+
+// console.log([1,2,3,4,5,6,7].slice(-1,3))
+// console.log([1,2,3,4,5,6,7].mySlice(-1,3))
+
+// console.log([1,2,3,4,5,6,7].slice(1,-3))
+// console.log([1,2,3,4,5,6,7].mySlice(1,-3))
+
+// console.log([1,2,3,4,5,6,7].slice(-3,-1))
+// console.log([1,2,3,4,5,6,7].mySlice(-3, -1))
+///////////////////////////////////////////
 //************************** every1() */
 // Array.prototype.every1 = function (cb, thisArg) {
 //   let res = true
@@ -810,4 +874,17 @@
 // console.log(undefined);
 // console.log(void 0 === undefined);
 
-const arr = 
+/////////// find() ///////////////////////
+// Array.prototype.myFind = function(cb, thisArg) {
+//   for(let i = 0; i < this.length; i += 1) {
+//     if (cb.call(null || thisArg, this[i], i, this)) {
+//       return this[i]
+//     }
+//   }
+
+//   return undefined
+// }
+
+// console.log([1,2,3,4].myFind(el => el === 4))
+// console.log([1,2,3,4].myFind(el => el === 8))
+

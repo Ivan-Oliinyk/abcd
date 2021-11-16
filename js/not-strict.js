@@ -50,27 +50,43 @@
 //   [1,  2,  13,  1, 3, 6]
 // ] ));
 
-function Sum (...args) {
-  Object.defineProperty(this, 'sum', {
-    configurable: false,
-    enumerable: true,
+// function Sum (...args) {
+//   Object.defineProperty(this, 'sum', {
+//     configurable: false,
+//     enumerable: true,
       
-    get: function() {
-      return args.reduce((sum, arg) => sum += arg, 0)
-    },
+//     get: function() {
+//       return args.reduce((sum, arg) => sum += arg, 0)
+//     },
 
-    set: function() { }
+//     set: function() { }
      
-  })
+//   })
   
-  Object.setPrototypeOf(this, {add: function(value) {
-    return sum += value
-  }})
-}
+//   Object.setPrototypeOf(this, {add: function(value) {
+//     return sum += value
+//   }})
+// }
 
-const sum = new Sum(1, 2, 3, 5)
+// const sum = new Sum(1, 2, 3, 5)
 
-console.log(sum)
-console.log(sum.sum)
-sum.add(2)
-console.log(sum.sum);
+// console.log(sum)
+// console.log(sum.sum)
+// sum.add(2)
+// console.log(sum.sum);
+// const numbs= []
+
+// function myRandom(min = 1, max = 9) {
+//   const random = Math.round(Math.random() * (max - min) + min)
+
+//   if(numbs.includes(random)) {
+//     myRandom(min, max)
+//   } 
+
+//   numbs.push(random)
+//   console.log(numbs);
+//   return random
+// }
+
+// console.log(myRandom(1, 9))
+

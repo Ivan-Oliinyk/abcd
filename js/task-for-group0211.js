@@ -67,14 +67,14 @@
 
 // const arr = [7, 9, 6, 2, 4, 11, 21, 14, 13]
 
-const chnageArr = arr => {
-  const even = arr.filter(el => !(el % 2)).sort((a, b)=> a - b).map(el => el > 10 ? el * el : el)
+// const chnageArr = arr => {
+//   const even = arr.filter(el => !(el % 2)).sort((a, b)=> a - b).map(el => el > 10 ? el * el : el)
   
-  return arr.map((el, idx) => el % 2 ? el * (idx + 1) : even.shift())
-}
+//   return arr.map((el, idx) => el % 2 ? el * (idx + 1) : even.shift())
+// }
 
-console.log(arr)
-console.log(chnageArr(arr)) //[7, 18, 2, 4, 6, 66, 147, 196, 117]
+// console.log(arr)
+// console.log(chnageArr(arr)) //[7, 18, 2, 4, 6, 66, 147, 196, 117]
 
 
 //////////////////////////////////////////////////////////////////////////////////////
@@ -98,21 +98,19 @@ console.log(chnageArr(arr)) //[7, 18, 2, 4, 6, 66, 147, 196, 117]
   // ]
 
 
+// const players = [
+//   {name: "Poly", timePlay: 1101, online: true, score: 42},
+//   {name: "Doly", timePlay: 901, online: true, score: 101},
+//   {name: "Max", timePlay: 642, online: false, score: 91},
+//   {name: "Grep", timePlay: 879, online: true, score: 66},
+//   {name: "John", timePlay: 1290, online: false, score: 21}
+// ]
 
-
-const players = [
-  {name: "Poly", timePlay: 1101, online: true, score: 42},
-  {name: "Doly", timePlay: 901, online: true, score: 101},
-  {name: "Max", timePlay: 642, online: false, score: 91},
-  {name: "Grep", timePlay: 879, online: true, score: 66},
-  {name: "John", timePlay: 1290, online: false, score: 21}
-]
-
-console.log(
-  players
-  .filter(({online}) => online)
-  .sort((a, b) => (b.score / b.timePlay) - (a.score / a.timePlay))
-)
+// console.log(
+//   players
+//   .filter(({online}) => online)
+//   .sort((a, b) => (b.score / b.timePlay) - (a.score / a.timePlay))
+// )
 
 // Задача 3
 
@@ -129,16 +127,16 @@ console.log(
 // const str1 = "скрипт";
 // const str2 = "знать";
 
-String.prototype.endsWith = function (substring) {
-  if (typeof substring !== 'string') {
-    return "argumnet must be string"
-  }
+// String.prototype.endsWith = function (substring) {
+//   if (typeof substring !== 'string') {
+//     return "argumnet must be string"
+//   }
 
-  return this.slice(-(substring.length)) === substring ? true : false
-}
+//   return this.slice(-(substring.length)) === substring ? true : false
+// }
 
-console.log(str.endsWith(str1))
-console.log(str.endsWith(str2))
+// console.log(str.endsWith(str1))
+// console.log(str.endsWith(str2))
 
 //Задача 4
 // Написать однострочное решение, которое вычисляет сумму квадратных корней для всех 
@@ -198,5 +196,5 @@ console.log(str.endsWith(str2))
 //   }
 // }
 
-// iteartion(obj)
-// iteartion(22)
+// console.log(iteartion(obj));
+// console.log(iteartion(22));

@@ -574,54 +574,54 @@
 //   return res
 // }
 
-function sumMatrix(arr) {
-  let res = []
-  let resDif = []
+// function sumMatrix(arr) {
+//   let res = []
+//   let resDif = []
 
-  for (let i = 0; i < arr.length / 2; i++) {
-    for (let j = 0; j < arr[0].length / 2; j++) {
-      resDif.push(
-        arr[i][j] + 
-        arr[i][arr[0].length - 1 - j] + 
-        arr[arr.length - 1 -i][j] + 
-        arr[arr.length - 1 -i][arr[0].length - 1 -j]
-      )
+//   for (let i = 0; i < arr.length / 2; i++) {
+//     for (let j = 0; j < arr[0].length / 2; j++) {
+//       resDif.push(
+//         arr[i][j] + 
+//         arr[i][arr[0].length - 1 - j] + 
+//         arr[arr.length - 1 -i][j] + 
+//         arr[arr.length - 1 -i][arr[0].length - 1 -j]
+//       )
 
-      if(resDif.length === arr.length / 2) {
-        res.push(resDif)
-        resDif = []
-      }
-    }
-  }
+//       if(resDif.length === arr.length / 2) {
+//         res.push(resDif)
+//         resDif = []
+//       }
+//     }
+//   }
 
-  return res
-}
+//   return res
+// }
 
-console.log(sumMatrix( [
-  [1,  2,  2,  9 ],
-  [1,  27,  3,  1 ],
-  [18,  11,  2,  6],
-  [1,  2,  13,  1]
-] ));
+// console.log(sumMatrix( [
+//   [1,  2,  2,  9 ],
+//   [1,  27,  3,  1 ],
+//   [18,  11,  2,  6],
+//   [1,  2,  13,  1]
+// ] ));
 
-console.log(sumMatrix( [
-  [1,  2,  2,  9, 1,  2,  2,  9 ],
-  [1,  27,  3,  1, 1,  2,  2,  9 ],
-  [18,  11,  2,  6, 1,  2,  2,  9],
-  [1,  2,  13,  1, 1,  2,  2,  9],
-  [1,  2,  2,  9, 1,  2,  2,  9 ],
-  [1,  27,  3,  1, 1,  2,  2,  9 ],
-  [18,  11,  2,  6, 1,  2,  2,  9],
-  [1,  2,  13,  1, 1,  2,  2,  9]
-] ));
+// console.log(sumMatrix( [
+//   [1,  2,  2,  9, 1,  2,  2,  9 ],
+//   [1,  27,  3,  1, 1,  2,  2,  9 ],
+//   [18,  11,  2,  6, 1,  2,  2,  9],
+//   [1,  2,  13,  1, 1,  2,  2,  9],
+//   [1,  2,  2,  9, 1,  2,  2,  9 ],
+//   [1,  27,  3,  1, 1,  2,  2,  9 ],
+//   [18,  11,  2,  6, 1,  2,  2,  9],
+//   [1,  2,  13,  1, 1,  2,  2,  9]
+// ] ));
 
-console.log(sumMatrix( [
-  [1,  2,  2,  9, 3, 6 ],
-  [1,  27,  3,  1, 3, 6 ],
-  [18,  11,  2,  6, 3, 6],
-  [1,  2,  13,  1, 3, 6],
-  [18,  11,  2,  6, 3, 6],
-  [1,  2,  13,  1, 3, 6]
-] ));
+// console.log(sumMatrix( [
+//   [1,  2,  2,  9, 3, 6 ],
+//   [1,  27,  3,  1, 3, 6 ],
+//   [18,  11,  2,  6, 3, 6],
+//   [1,  2,  13,  1, 3, 6],
+//   [18,  11,  2,  6, 3, 6],
+//   [1,  2,  13,  1, 3, 6]
+// ] ));
 
 
