@@ -453,10 +453,9 @@
 //   Object.defineProperty(this, 'sum', {
 //     configurable: false,
 //     enumerable: true,
-//     writable: false,
 
 //     get: function() {
-//       return sum = [...args].reduce((sum, el) => sum += el, 0 )
+//       return args.reduce((sum, el) => sum += el, 0 )
 //     },
 
 //     set: function() { }
@@ -475,6 +474,8 @@
 // }
 
 // const sum = new Sum(1, 2, 3)
+// // console.log(sum.res)
+
 
 /////////////////////////////////////////
 //Сложить матрицу как листок
@@ -625,3 +626,20 @@
 // ] ));
 
 
+// function req(arr) {
+//   let i = 0
+
+//   function rek(i) {
+//     console.log(arr[i])
+
+//     i++
+
+//     if (arr.length > i) {
+//       rek(i)
+//     }
+//   }
+
+//   rek.call(this, i)
+// }
+
+// req([1,2,3,4,5])

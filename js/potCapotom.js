@@ -888,3 +888,171 @@
 // console.log([1,2,3,4].myFind(el => el === 4))
 // console.log([1,2,3,4].myFind(el => el === 8))
 
+/////////////////////////////////////////// my freez() /////////////////////////////////////////////////
+
+// Object.prototype.myFreez = function (obj) {
+//   Object.preventExtensions(obj)
+//   // const props = Object.getOwnPropertyNames(obj)
+
+//   Object.getOwnPropertyNames(obj).forEach(item => {
+//     Object.defineProperty(obj, item, {
+//       configurable: false,
+//       writable: false,
+//       enumerable: false
+//     })
+//   })
+// }
+
+// const a = {
+//   n: 1,
+//   b: 2,
+//   c: 3
+// }
+
+// const b = Object.create(a)
+// b.c = 33
+// b.u = 100
+
+// Object.myFreez(b)
+
+// console.log(b);
+// // b.c = 222
+// // b.p = 102
+
+/////////////////////// Object.is() ///////////////////////
+
+// Object.prototype.myIs = function (x, y) {
+//   // if (x === y) {
+//   //   return x !== 0 || 1/x === 1/y
+//   // } else {
+//   //   return x !== x && y !== y
+//   // }
+
+//   return x === y ? x !== 0 || 1/x === 1/y : x !== x && y !== y
+// }
+
+// console.log(Object.myIs(1, 1));
+// console.log(Object.myIs(0, 0));
+// console.log(Object.myIs(-0, 1));
+// console.log(Object.myIs(Infinity, -Infinity));
+// console.log(Object.myIs('Infinity', 'Infi2nity'));
+
+
+///////////////////// Array.indexOf() ////////////////
+
+// Array.prototype.indexOf1 = function (str, pos = 0) {
+//   for(let i = pos; i < this.length; i++) {
+//     if (typeof this[i] !== 'string') {
+//       if (this[i] === str) {
+//         return i
+//       } else if (this[i].indexOf(str) !== -1) {
+//         return i
+//       }
+//     }
+//   }
+
+//   return -1
+// }
+
+//////////////////////////// recurse filter() ///////////////////////////
+
+// Array.prototype.recurseFilter = function (cb, thisArg) {
+//   const res = []
+//   const count = this.length
+//   let i = 0
+
+//   function rec(i) {
+//     if (cb.call(thisArg || void 0, this[i], i, this)) {
+//       res.push(this[i])
+//     }
+    
+//     i++
+        
+//     if (i < count) {
+//       // rec.call(this, i)
+//       reqBind(i)
+//     }
+//   }
+
+//   // rec.call(this, i)
+//   let reqBind = rec.bind(this)
+
+//   reqBind(i)
+
+//   return res
+// }
+
+// console.log([1,2,3,4,5,6,7,8,9,10].recurseFilter(el => el % 2));
+// console.log([1,2,3,4,5,6,7,8,9,10].recurseFilter(el => !(el % 2)));
+
+
+///////////////////////////////////////////////////////////////////////////////////
+
+// function req(arr) {
+//   let i = 0
+
+//   function rek(i) {
+//     console.log(arr[i])
+
+//     i++
+
+//     if (arr.length > i) {
+//       rek(i)
+//     }
+//   }
+
+//   rek.call(this, i)
+// }
+
+// req([1,2,3,4,5])
+
+//////////////////////////////////////////////////////////////////////////////////////
+/////////////////// requrse map() ////////////////////
+
+// Array.prototype.reqMap = function (cb, thisArg) {
+//   const res = []
+//   let i = 0
+
+//   function req() {
+//     if(i < this.length) {
+//       res.push(cb.call(thisArg || void 0, this[i], i, this))
+            
+//       i++
+
+//       req.call(this)
+//     }
+//   }
+
+//   req.call(this)
+
+//   return res
+// }
+
+// console.log([1,2,3,4,5].reqMap(el => el * 2));
+
+/////////////////// requrse map() ////////////////////
+
+// Array.prototype.reqMap = function (cb, thisArg) {
+//   const res = []
+//   let i = 0
+
+//   return req.bind(this, i, cb, thisArg, res)()
+// }
+
+// function req(i, cb, thisArg, res) {
+//   if(i < this.length) {
+//     res.push(cb.call(thisArg || void 0, this[i], i, this))
+              
+//     i++
+
+//     return req.call(this, i, cb, thisArg, res)
+//   }
+
+//   return res
+// }
+
+
+// console.log([1,2,3,4,5].reqMap(el => el * 2));
+
+
+////////////////////////////////////////////////////////////////
