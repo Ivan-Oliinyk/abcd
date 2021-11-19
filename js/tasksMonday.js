@@ -326,24 +326,453 @@
 
 /////////////////// requrse map() ////////////////////
 
-Array.prototype.reqMap = function (cb, thisArg) {
-  const res = []
-  let i = 0
+// Array.prototype.reqMap = function (cb, thisArg) {
+//   const res = []
+//   let i = 0
 
-  return req.bind(this, i, cb, thisArg, res)()
-}
+//   return req.bind(this, i, cb, thisArg, res)()
+// }
 
-function req(i, cb, thisArg, res) {
-  if(i < this.length) {
-    res.push(cb.call(thisArg || void 0, this[i], i, this))
+// function req(i, cb, thisArg, res) {
+//   if(i < this.length) {
+//     res.push(cb.call(thisArg || void 0, this[i], i, this))
               
-    i++
+//     i++
 
-    return req.call(this, i, cb, thisArg, res)
-  }
+//     return req.call(this, i, cb, thisArg, res)
+//   }
 
-  return res
+//   return res
+// }
+
+
+// console.log([1,2,3,4,5].reqMap(el => el * 2));
+
+///////////////////////////////////////////////////////
+//////// мой reduce() рекурсия внешняя
+
+// Array.prototype.reqReduce = function(cb, init) {
+//   let res = init || 0
+//   let i = 0
+
+//   return rec.call(this, i, cb, res)
+// }
+
+// function rec(i, cb, res) {
+//   if (this.length > i) {
+//     res = cb.call(null, res, this[i], i, this)
+//     i++
+//     return rec.call(this, i, cb, res)
+//   }
+
+//   return res
+// }
+
+// console.log([1,2,3,4].reqReduce((sum, el) => sum += el, 0))
+// console.log([10, 20, 30, -5].reqReduce((sum, el) => sum += el, 0));
+
+///////////////////////////////////////////////////////
+//////// мой reduce() рекурсия внутренняя
+
+// Array.prototype.reqReduce = function (cb, init) {
+//   let res = init || 0
+//   let i = 0
+
+//   function rec () {
+//     if(this.length > i) {
+//       res = cb.call(null, res, this[i], i, this)
+//       i++
+//       rec.call(this)      
+//     }
+    
+//     return res
+//   }
+
+//   rec.call(this)
+
+//   return res
+// }
+
+// console.log([1,2,3,4].reqReduce((sum, el) => sum += el, 0))
+// console.log([10, 20, 30, -5].reqReduce((sum, el) => sum += el, 0));
+
+
+// const arr = [[2,6,7], [11,8,3], [6,4,3]]
+
+// const multMatrix = arr => arr.map(el => el.map(item => item % 2 ? item * Math.min(...arr.flat(arr.length)) : item))
+// console.log(multMatrix(arr));
+
+// String.prototype.mySplit = function (sep, limit) {
+//   if (sep === undefined) {
+//     return [this]
+//   }
+
+//   let res = []
+
+//   if (sep === "") {
+//     let i = 0 
+
+//     while(i < this.length) {
+//       res.push(this[i])
+//     }
+//     console.log(res);
+
+//     return res
+//   }
+  
+//   const length  = this.length
+//   let i = this.indexOf(sep)
+//   let start = 0
+  
+//   while ( i !== -1 ) {
+//     res.push(this.slice(start, i))
+//     start = i + sep.length
+//     i = this.indexOf(sep, start)
+//   }
+
+//   res.push(this.slice(start))
+//   return res
+// }
+
+// console.log('12323'.mySplit(""))
+
+
+// console.log('1231233'.match('12'))
+
+// const arr = [1,2, [2,3, [3]]]
+// arr.flat(-1)
+// console.log(arr);
+
+// console.log('123144241'.repeat());
+
+// console.log(parseInt('21px', 10))
+// const getIdCb = () =>  "id" + String(Date.now())
+// console.log(getIdCb());
+// console.log(getIdCb());
+// console.log(getIdCb());
+
+// console.log([].concat([1], [3]))
+
+// function move(arr){
+//   return [].concat(arr.slice(-1), arr.slice(0, -1))
+// }
+
+// console.log(move([1,2,3]))
+
+// Array.prototype.move = function(iter = 1) {
+//   return [].concat(this.slice(-iter), this.slice(0, -iter))
+// }
+
+// console.log([1,2,3])
+// console.log([1,2,3].move())
+// console.log([1,2,3].move().move())
+// console.log([1,2,3].move().move().move())
+// console.log([1,2,3].move().move().move().move())
+// console.log([1,2,3].move().move().move().move().move())
+// console.log([1,2,3].move().move().move().move().move().move())
+
+// String.prototype.padding = function (init) {
+//   return this.split("").reduce((sum, el, i) => sum += init.repeat(i) + el, '')
+// }
+
+// console.log('aaaa'.padding('_'))
+// console.log('012345'.padding('_'))
+
+// const arr = [1,2, 'Poly']
+
+// console.log(arr.find(el => el === 'Poly'))
+
+// [1,2,3].forEach(function(el){this.push(a)}, a)
+
+// String.prototype.myConcat = function (...args) {
+//   return args.reduce((res, el) => res += el, this)
+// }
+
+// console.log("123".myConcat('333,777,888,999'))
+
+// String.prototype.myIncludes = function(search, pos) {
+//   if (pos <= 0 || pos === '') {
+//     pos = 0
+//   }
+
+//   if (pos > this.length || pos + search.length > this.length) {
+//     return false
+//   }
+
+//   return this.indexOf(search, pos) !== -1
+// }
+
+// console.log('12312323'.myIncludes(23, 7));
+
+// String.prototype.myIndexOf = function(search, pos = 0) {
+//   if (search === '') {
+//     return Number(pos) > this.length ? this.length : Number(pos)
+//   } else if (search.length  + Number(pos) > this.length) {
+//     return -1
+//   } 
+  
+//   typeof Number(pos) !== 'number' || Number(pos) < 0  ? pos = 0 : pos = Number(pos)
+
+//   for (let i = pos; i < this.length; i+= 1) {
+//     if(this.slice(i, String(search).length + i) === String(search)){
+//       return i
+//     }
+//   }
+
+//   return -1
+// }
+
+// console.log('1231 2353'.myIndexOf(' ', "-213"));
+// console.log('1231 2353'.indexOf(' ', "-212"));
+
+// const arr = [1,2,3,4,5]
+// console.log(arr.entries());
+
+// console.log(arr.splice(2, 2, 31));
+
+// console.log(arr);
+
+// const arr = [1,2,2,3]
+// console.log(arr.unshift('2'));
+// console.log(Math.abs("udefined"));
+// console.log(parseFloat('23px'));
+// console.log(Number.parseFloat('23px'));
+// console.log(typeof 234.56.toPrecision(7));
+// console.log(0.023456.toPrecision(7));
+
+// console.log([1,[2,[3,[4]]]].flat(2));
+
+// const arr = ['f', 's', 'a', 'A', 'q', 'j']
+
+// console.log(arr.sort());
+
+// console.log('123456789'.substring(7, 3));
+
+// Array.myIsArray = function (arr) {
+//   return arr instanceof Array
+// }
+
+// console.log(Array.myIsArray([1,2]));
+// console.log(Array.myIsArray({}));
+// console.log(Array.myIsArray('sdad'));
+
+///////////////////// myPush мой push ///////////////////////
+
+// Array.prototype.myPush = function(...args) {
+//   this.splice(this.length, 0, ...args.flat())
+
+//   return this.length
+// }
+
+// let arr = [1,2,3]
+// console.log(arr.myPush([66, 88]))
+// console.log(arr)
+
+///////////////////// myShift мой shift ///////////////////////
+// Array.prototype.myShift = function () {
+//   return this.splice(0, 1)
+// }
+
+// const arr = [1,2,3,4]
+// console.log(arr.myShift());
+// console.log(arr);
+
+
+///////////////////// myUnShift мой unshift ///////////////////////
+// Array.prototype.myUnShift = function (el) {
+//   this.splice(0, 0, el)
+//   return this.slice(0,1)
+// }
+
+// const arr = [1,2,3,4]
+// console.log(arr.myUnShift(2));
+// console.log(arr);
+
+///////////////////// myFilter мой filter внешняя рекурсия ///////////////////////
+// Array.prototype.myRecFiltrer = function(cb, thisArg) {
+//   let res = []
+//   let i = 0
+
+//   rec.call(this, i, cb, res)
+
+//   return res
+// }
+
+// function rec(i, cb, res) {
+//   if(this.length > i) {
+//     if(cb.call(this, this[i], i, this)) {
+//       res.push(this[i])
+//     }
+    
+//     i++
+//     return rec.call(this, i, cb, res)
+//   }
+
+//   return res
+// }
+
+// console.log([1, 2, 3, 5, 6, 7, 8 ,9].myRecFiltrer(el => el % 2));
+
+// console.log('13123'.match('31'));
+
+// console.log([1,2,3,'Vasia',1,2].find(el => el === "Vasia"));
+
+// console.log(parseFloat('123.23123213ps'));
+
+// const a = {
+//   Object.defineProperty(this, "x", {
+//     writable: false,
+
+//     get
+//   })
+// }
+
+// const arr = [9, [2, 3, [6, 3, 7]], [2]]
+
+// Array.prototype.multMin = function () {
+//   const min = Math.min(...this.flat(Infinity))
+//   const res = []
+//   let i = 0
+  
+//   function rec(i < this.length) {
+
+//   }
+
+// } 
+
+// console.log(arr.multMin());
+
+// const arr = [2, 3, 5, 7, 9, 10, 2, 3, 5, 3]
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Array.prototype.firstAndLastIndexOf = function (value) {
+//   return this.reduce((res, el, i) => {
+//     if (el === value) {
+//       res[1] = i
+//     }
+
+//     if (res[0] === -1) {
+//       res[0] = i
+//     }
+    
+//     return res    
+//   },[-1, -1] )
+// }
+
+// Array.prototype.firstAndLastIndexOf = function (value) {
+//   const res = []
+//   this.filter((el, i) => el === value ? res.push(i) : res)
+
+//   return res.length > 0 ? [res[0], res[res.length -1]] : [-1, -1]
+// }
+
+// Array.prototype.firstAndLastIndexOf = function (value) {
+//   const res = [-1, -1]
+  
+//   for(let i = 0; i < this.length; i++) {
+//     if (this[i] === value) {
+//       res[1] = i
+
+//       if (res[0] === -1) {
+//         res[0] = i
+//       }
+//     }
+//   }
+
+//   return res
+// }
+// Array.prototype.firstAndLastIndexOf = function (value) {
+//   let res = []
+//   let i = 0
+
+//   while(this.length > i) {
+//     if (this[i] === value) {
+//       res.push(i)
+//     }
+
+//     i++
+//   }
+
+//   res.length || res[-1, -1] 
+//   return [res[0], res[res.length -1]]
+// }
+
+// Array.prototype.firstAndLastIndexOf = function (value) {
+//   let res = [-1, -1]
+//   let i = 0
+
+//   function rec(i) {
+//     if (this.length > i) {
+//       if (this[i] === value) {
+//         res[1] = i
+
+//         if (res[0] === -1) {
+//           res[0] = i
+//         }
+//       } 
+
+//       i++
+
+//       return rec.call(this, i)
+//     }
+//   }
+
+//   rec.call(this, i)
+
+//   return res
+// }
+
+
+// Array.prototype.firstAndLastIndexOf = function (value) {
+//   let res = [-1, -1]
+//   let i = 0
+//   const temp = this
+
+//   function rec() {
+//     if (temp.length > i) {
+//       if (temp[i] === value) {
+//         res[1] = i
+
+//         if (res[0] === -1) {
+//           res[0] = i
+//         }
+//       } 
+
+//       i++
+
+//       return rec()
+//     }
+//   }
+
+//   rec(i)
+
+//   return res
+// }
+
+// Array.prototype.firstAndLastIndexOf = function (value) {
+//   return this.reduce((res, el, i) => {
+//     if(el === value) {
+//       res[1]= (i)
+
+//       if (res[0] === -1) {
+//         res[0] = i
+//       }
+//     }
+
+//     return res
+//   }, [-1, -1])
+// }
+
+Array.prototype.firstAndLastIndexOf = function (value) {
+  const temp = this.map((el, i) => el === value ? i : -1)
+    .filter(el => el !== -1)
+
+  return temp.length ? [temp[0], temp[temp.length -1]] : temp[0] = -1 
 }
 
 
-console.log([1,2,3,4,5].reqMap(el => el * 2));
+const arr = [2, 3, 5, 7, 1, 9, 10, 5, 2, 3, 5, 3]
+
+console.log(arr.firstAndLastIndexOf(5));
+console.log(arr.firstAndLastIndexOf(6));
+console.log(arr.firstAndLastIndexOf(1));

@@ -22,6 +22,10 @@
 // console.log("123".concat("sdsdsd", '2asd'));
 // console.log("123".concat1("sdsdsd", '2asd', '333333'));
 
+/////////////////////////////////////////////////////////
+// String.prototype.myConcat = function (...args) {
+//   return args.reduce((res, el) => res += el, this)
+// }
 
 // ************* includes() *****************************************************
 
@@ -92,6 +96,20 @@
 // console.log('Evaltolocalthissome'.includes1("this", 2));
 // console.log('Evaltolocalthissome'.includes1("this", 'sd'));
 // console.log('Evaltolocalthissome'.includes1("thi2s"));
+
+// String.prototype.myIncludes = function(search, pos) {
+//   if (pos <= 0 || pos === '') {
+//     pos = 0
+//   }
+
+//   if (pos > this.length || pos + search.length > this.length) {
+//     return false
+//   }
+
+//   return this.indexOf(search, pos) !== -1
+// }
+
+// console.log('12312323'.myIncludes(23, 7));
 
 
 // ************* reverse() *****************************************************
@@ -204,8 +222,8 @@
 //   return res
 // }
 
-// console.log('obj1ec1t1234'.lastIndexOf("125", 99.21));
-// console.log('obj1ec1t1234'.lastIndexOf1("125", 99.81));
+// console.log('obj1ec1t1234'.lastIndexOf("1", 6));
+// console.log('obj1ec1t1234'.lastIndexOf1("1", 6));
 
 
 // ************* substring() *****************************************************
@@ -372,7 +390,41 @@
 
 ////////////////////////////////////////////////////
 //************************** indexOf() */
+// String.prototype.myIndexOf = function(search, pos = 0) {
+//   if (search === '') {
+//     return Number(pos) > this.length ? this.length : Number(pos)
+//   } else if (search.length  + Number(pos) > this.length) {
+//     return -1
+//   } 
+  
+//   typeof Number(pos) !== 'number' || Number(pos) < 0  ? pos = 0 : pos = Number(pos)
 
+//   for (let i = pos; i < this.length; i+= 1) {
+//     if(this.slice(i, String(search).length + i) === String(search)){
+//       return i
+//     }
+//   }
+
+//   return -1
+// }
+
+// String.prototype.myIndexOf = function(search, pos = 0) {
+//   if (search.length + pos > this.length) {
+//     return false
+//   }
+
+//   typeof Number(pos) !== 'number' ? pos = 0 : pos = Number(pos)
+
+//   for (let i = pos; i < this.length; i+= 1) {
+//     if(this.slice(i, String(search).length + i) === String(search)){
+//       return i
+//     }
+//   }
+
+//   return -1
+// }
+
+//////////////////////////////////////////////////////////////////////
 // String.prototype.indexOf1 = function (value, pos = 0) {
 //   if (typeof pos !== 'number' || pos < 0) {
 //     pos = 0
@@ -1056,3 +1108,127 @@
 
 
 ////////////////////////////////////////////////////////////////
+//////// мой reduce() рекурсия внешняя
+
+// Array.prototype.reqReduce = function(cb, init) {
+//   let res = init || 0
+//   let i = 0
+
+//   return rec.call(this, i, cb, res)
+// }
+
+// function rec(i, cb, res) {
+//   if (this.length > i) {
+//     res = cb.call(this, res, this[i], i, this)
+//     i++
+//     return rec.call(this, i, cb, res)
+//   }
+
+//   return res
+// }
+
+// console.log([1,2,3,4].reqReduce((sum, el) => sum += el, 0))
+// console.log([10, 20, 30, -5].reqReduce((sum, el) => sum += el, 0));
+
+///////////////////////////////////////////////////////
+//////// мой reduce() рекурсия внутренняя
+
+// Array.prototype.reqReduce = function (cb, init) {
+//   let res = init || 0
+//   let i = 0
+
+//   function rec () {
+//     if(this.length > i) {
+//       res = cb.call(this, res, this[i], i, this)
+//       i++
+//       rec.call(this)      
+//     }
+    
+//     return res
+//   }
+
+//   rec.call(this)
+
+//   return res
+// }
+
+// console.log([1,2,3,4].reqReduce((sum, el) => sum += el, 0))
+// console.log([10, 20, 30, -5].reqReduce((sum, el) => sum += el, 0));
+
+// console.log(new Date.now());
+
+//////////////// myIsArray() мой isArray() /////////////
+// Array.myIsArray = function (arr) {
+//   return arr instanceof Array
+// }
+
+// console.log(Array.myIsArray([1,2]));
+// console.log(Array.myIsArray({}));
+// console.log(Array.myIsArray('sdad'));
+
+
+////////////////////myPop() мой pop ////////////////////// 
+// Array.prototype.myPop = function () {
+//   return this.splice(-1, 1,)
+// }
+
+// const arr = [1,2,3,4]
+// arr.myPop()
+// console.log(arr)
+
+///////////////////////////////////////
+///////////////////// myPush мой push ///////////////////////
+
+// Array.prototype.myPush = function(...args) {
+//   this.splice(this.length, 0, ...args.flat())
+
+//   return this.length
+// }
+
+// let arr = [1,2,3]
+// console.log(arr.myPush([66, 88]))
+// console.log(arr)
+
+///////////////////// myShift мой shift ///////////////////////
+// Array.prototype.myShift = function () {
+//   return this.splice(0, 1)
+// }
+
+// const arr = [1,2,3,4]
+// console.log(arr.myShift());
+// console.log(arr);
+
+///////////////////// myUnShift мой unshift ///////////////////////
+// Array.prototype.myUnShift = function (el) {
+//   this.splice(0, 0, el)
+//   return this.slice(0,1)
+// }
+
+// const arr = [1,2,3,4]
+// console.log(arr.myUnShift(2));
+// console.log(arr);
+
+///////////////////// myFilter мой filter внешняя рекурсия ///////////////////////
+// Array.prototype.myRecFiltrer = function(cb, thisArg) {
+//   let res = []
+//   let i = 0
+
+//   rec.call(this, i, cb, res)
+
+//   return res
+// }
+
+// function rec(i, cb, res) {
+//   if(this.length > i) {
+//     if(cb.call(this, this[i], i, this)) {
+//       res.push(this[i])
+//     }
+    
+//     i++
+//     return rec.call(this, i, cb, res)
+//   }
+
+//   return res
+// }
+
+// console.log([1, 2, 3, 5, 6, 7, 8 ,9].myRecFiltrer(el => el % 2));
