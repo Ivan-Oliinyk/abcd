@@ -10,5 +10,10 @@
 // import "/js/potCapotom.js"
 // import "/js/task-render.js"
 // import "/js/taskRender.js"
-import "./js/tasksMonday.js"
+// import "./js/tasksMonday.js"
 
+// typeScript
+// import "/ts/types.js";
+// import "/ts/interface.js";
+// import "/ts/enume.js";
+import "/ts/function.js";
